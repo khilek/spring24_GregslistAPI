@@ -11,6 +11,10 @@ export const HouseSchema = new Schema ({
           type: Number,
           required: true
       },
+    levels:{
+      type: Number,
+      required: true
+    },
       year: {
           type: Number,
           required: true

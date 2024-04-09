@@ -19,6 +19,16 @@ async getHouseById(houseId){
 }
 
 
+async searchHouses(searchQuery){
+  // const houses = await dbContext.Houses.find({bedrooms: '3' })
+const houses = await dbContext.Houses.find(searchQuery)
+
+  return houses
+}
+
+
+
+
 }
 
 export const housesService = new HousesService()

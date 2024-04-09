@@ -7,6 +7,7 @@ constructor() {
 super('api/houses')
 this.router
   .get('', this.getHouses)
+  .get('/search', this.searchHouses)
   .get('/:houseId', this.getHouseById)
 }
 
@@ -32,7 +33,16 @@ try {
 }
 }
 
+async searchHouses(request, response, next){
+try {
+  const searchQuery = request.query
+  const houses = await housesService.searchHouses(searchQuery)
+  response.send(houses)
+} catch (error) {
+  next(error)
+}
 
+}
 
 
 

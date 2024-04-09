@@ -7,6 +7,7 @@ constructor() {
 super('api/houses')
 this.router
   .get('', this.getHouses)
+  .get('/:houseId', this.getHouseById)
 }
 
 
@@ -21,6 +22,15 @@ try {
 
 }
 
+async getHouseById(request, response, next){
+try {
+  const houseId = request.params.houseId
+  const house = await housesService.getHouseById(houseId)
+  response.send(house)
+} catch (error) {
+  next(error)
+}
+}
 
 
 
